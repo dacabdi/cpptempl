@@ -420,6 +420,3 @@ _deps
 
 # Remove environment
 env/
-
-# Ignore vscode stuff
-.vscode/
