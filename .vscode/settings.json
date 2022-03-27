@@ -5,10 +5,18 @@
         "cmake",
         "CMake",
         "cppcoreguidelines",
+        "egor",
         "gtest",
+        "jwlawson",
         "libc",
+        "lukka",
+        "Mayes",
         "NOLINT",
+        "pwsh",
+        "seanmiddleditch",
         "stdlib",
+        "symbitic",
+        "tensin",
         "VCPKG"
     ]
 }

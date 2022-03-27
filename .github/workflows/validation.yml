@@ -10,30 +10,67 @@ on:
 
 env:
   SCRIPTS_ROOT: ./scripts
+  LLVM_VERSION: "13.0.1"
+  CMAKE_VERSION: "3.22.2"
 
 jobs:
 
   validate:
-    name: 'Validate'
+    name: Validate on ${{runner.OS}}
     strategy:
       matrix:
-        os: [ ubuntu-latest ]
+        os:
+          - ubuntu-20.04
+          - windows-2022
     runs-on: ${{ matrix.os }}
     steps:
 
-      - name: 'Checkout repository'
+      - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: 'Make scripts executable'
+      - name: 'Make all scripts executable'
         if: runner.os == 'Linux'
         run: chmod +x ${{ env.SCRIPTS_ROOT }}/*
 
       - name: Prepare and describe working environment
-        if: runner.os == 'Linux'
-        run: ${{ env.SCRIPTS_ROOT }}/ci-bootstrap.sh
+        if: ${{ runner.OS == 'Linux' }}
+        shell: bash
+        run: ${{ env.SCRIPTS_ROOT }}/bootstrap-linux.sh
 
-      - name: CMake generate
-        run: cmake --preset linux-x64-release
+      - name: Prepare and describe working environment
+        if: ${{ runner.OS == 'Windows' }}
+        shell: pwsh
+        run: ${{ env.SCRIPTS_ROOT }}/bootstrap-windows.ps1
 
-      - name: CMake build and lint
-        run: cmake --build --preset linux-x64-release
+      - name: Cache LLVM and Clang
+        id: cache-llvm
+        uses: actions/cache@v2
+        with:
+          path: ${{ env.GITHUB_WORKSPACE }}/env/llvm
+          key: llvm-${{ env.LLVM_VERSION }}-${{runner.OS}}
+
+      - name: Install LLVM and Clang
+        uses: KyleMayes/install-llvm-action@v1
+        with:
+          # see https://github.com/llvm/llvm-project/releases/ for versions
+          version: ${{ env.LLVM_VERSION }}
+          ubuntu-version: "18.04" # set to match release version url
+          force-version: true
+          cached: ${{ steps.cache-llvm.outputs.cache-hit }}
+          directory: ${{ env.GITHUB_WORKSPACE }}/env/llvm
+
+      - name: Setup CMake
+        uses: jwlawson/actions-setup-cmake@v1.12
+        with:
+          cmake-version: ${{ env.CMAKE_VERSION }}
+
+      - name: Install ninja-build tool
+        uses: seanmiddleditch/gha-setup-ninja@master
+        with:
+          destination: ${{ env.GITHUB_WORKSPACE }}/env/ninja-build
+
+      - name: CMake configure and build
+        uses: lukka/run-cmake@v10
+        with:
+          configurePreset: linux-x64-release
+          buildPreset: linux-x64-release
