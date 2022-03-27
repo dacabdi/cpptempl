@@ -13,11 +13,20 @@
     },
     "configurePresets": [
         {
-            "name": "windows-base",
+            "name": "base",
             "hidden": true,
             "generator": "Ninja",
             "binaryDir": "${sourceDir}/out/build/${presetName}",
             "installDir": "${sourceDir}/out/install/${presetName}",
+            "environment": {
+                "VCPKG_ROOT": "${sourceDir}/.env/vcpkg",
+                "VCPKG_INSTALLED_DIR": "${sourceDir}/.env/vcpkg-installed"
+            }
+        },
+        {
+            "name": "windows-base",
+            "inherits": "base",
+            "hidden": true,
             "cacheVariables": {
                 "CMAKE_C_COMPILER": "clang-cl.exe",
                 "CMAKE_CXX_COMPILER": "clang-cl.exe"
@@ -29,23 +38,24 @@
             }
         },
         {
-            "name": "windows-x64-debug",
+            "name": "windows-base-x64",
             "inherits": "windows-base",
+            "hidden": true,
             "architecture": {
                 "value": "x64",
                 "strategy": "external"
-            },
+            }
+        },
+        {
+            "name": "windows-x64-debug",
+            "inherits": "windows-base-x64",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug"
             }
         },
         {
             "name": "windows-x64-release",
-            "inherits": "windows-base",
-            "architecture": {
-                "value": "x64",
-                "strategy": "external"
-            },
+            "inherits": "windows-base-x64",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release"
             }

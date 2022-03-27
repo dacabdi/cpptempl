@@ -1,0 +1,18 @@
+Checks: >
+  clang-diagnostic-*,
+  clang-analyzer-*,
+  cppcoreguidelines-*,
+  bugprone-*,
+  google-*,
+  misc-*,
+  modernize-*,
+  performance-*,
+  portability-*,
+  readability-*,
+WarningsAsErrors: true
+HeaderFilterRegex: '.*'
+AnalyzeTemporaryDtors: true
+FormatStyle: google
+WarningsAsErrors: "*"
+CheckOptions:
+...
