@@ -17,10 +17,43 @@
             "hidden": true,
             "generator": "Ninja",
             "binaryDir": "${sourceDir}/out/build/${presetName}",
-            "installDir": "${sourceDir}/out/install/${presetName}",
-            "environment": {
-                "VCPKG_ROOT": "${sourceDir}/.env/vcpkg",
-                "VCPKG_INSTALLED_DIR": "${sourceDir}/.env/vcpkg-installed"
+            "installDir": "${sourceDir}/out/install/${presetName}"
+        },
+        {
+            "name": "linux-base",
+            "inherits": "base",
+            "hidden": true,
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "clang",
+                "CMAKE_CXX_COMPILER": "clang++"
+            },
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Linux"
+            }
+        },
+        {
+            "name": "linux-base-x64",
+            "inherits": "linux-base",
+            "hidden": true,
+            "architecture": {
+                "value": "x64",
+                "strategy": "external"
+            }
+        },
+        {
+            "name": "linux-x64-debug",
+            "inherits": "linux-base-x64",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "linux-x64-release",
+            "inherits": "linux-base-x64",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
             }
         },
         {
@@ -70,6 +103,16 @@
         {
             "name": "windows-x64-release",
             "configurePreset": "windows-x64-release",
+            "verbose": true
+        },
+        {
+            "name": "linux-x64-debug",
+            "configurePreset": "linux-x64-debug",
+            "verbose": true
+        },
+        {
+            "name": "linux-x64-release",
+            "configurePreset": "linux-x64-release",
             "verbose": true
         }
     ]

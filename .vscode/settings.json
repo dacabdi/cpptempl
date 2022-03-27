@@ -1,10 +1,14 @@
 {
     "cSpell.words": [
         "bugprone",
+        "buildsystems",
         "cmake",
         "CMake",
         "cppcoreguidelines",
+        "gtest",
+        "libc",
         "NOLINT",
+        "stdlib",
         "VCPKG"
     ]
 }

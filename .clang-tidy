@@ -10,7 +10,7 @@ Checks: >
   portability-*,
   readability-*,
 WarningsAsErrors: true
-HeaderFilterRegex: '.*'
+HeaderFilterRegex: ".*"
 AnalyzeTemporaryDtors: true
 FormatStyle: google
 WarningsAsErrors: "*"

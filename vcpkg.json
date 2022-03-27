@@ -3,6 +3,6 @@
     "name": "cpptempl",
     "version": "0.15.2",
     "dependencies": [
-        "libxml2"
+        "gtest"
     ]
 }

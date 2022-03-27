@@ -7,5 +7,7 @@ auto main() -> int
 
 	std::cout << "The meaning of life is " << value << std::endl;
 
+	try { } catch (...) { };
+
 	return 0;
 }

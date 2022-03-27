@@ -1,0 +1,39 @@
+name: 'Validate'
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+
+env:
+  SCRIPTS_ROOT: ./scripts
+
+jobs:
+
+  validate:
+    name: 'Validate'
+    strategy:
+      matrix:
+        os: [ ubuntu-latest ]
+    runs-on: ${{ matrix.os }}
+    steps:
+
+      - name: 'Checkout repository'
+        uses: actions/checkout@v2
+
+      - name: 'Make scripts executable'
+        if: runner.os == 'Linux'
+        run: chmod +x ${{ env.SCRIPTS_ROOT }}/*
+
+      - name: Prepare and describe working environment
+        if: runner.os == 'Linux'
+        run: ${{ env.SCRIPTS_ROOT }}/ci-bootstrap.sh
+
+      - name: CMake generate
+        run: cmake --preset linux-x64-release
+
+      - name: CMake build and lint
+        run: cmake --build --preset linux-x64-release

@@ -1,7 +1,7 @@
-#include <corelib.h>
+#include <core.h>
 #include <gtest/gtest.h>
 
-namespace test::ut::core
+namespace test::ut
 {
     TEST(CoreLibTests, should_add_one) // NOLINT
     {

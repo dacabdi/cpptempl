@@ -1,13 +1,16 @@
 cmake_minimum_required(VERSION 3.22)
 
-set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-include(.config/vcpkg.cmake)
+include(vcpkg.cmake)
 
-# uses .clang-tidy file implicitly
-# temporarily disable clang-tidy due to: https://gitlab.kitware.com/cmake/cmake/-/issues/20512
-set(CMAKE_CXX_CLANG_TIDY clang-tidy)
+# will uses .clang-tidy file implicitly
+# please configure in presets for non-windows configs,
+# temporarily disabled here due to:
+# 	https://gitlab.kitware.com/cmake/cmake/-/issues/20512
+# 	https://gitlab.kitware.com/cmake/cmake/-/issues/22979
+# set(CMAKE_CXX_CLANG_TIDY clang-tidy)
 
 include_directories(src/inc)
 
@@ -28,4 +31,4 @@ add_executable (sample
 target_link_libraries (sample corelib)
 
 enable_testing()
-#add_subdirectory(src/test)
+add_subdirectory(src/tests)
