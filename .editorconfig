@@ -1,0 +1,31 @@
+# file format ref: https://editorconfig.org/#file-format-details
+# use vscode extension "editorconfig.editorconfig" to integrate
+
+# stop here when traversing the file tree looking for editor configurations
+root = true
+
+[*]
+indent_style = space
+indent_size = 2
+charset = utf-8
+end_of_line = crlf
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+# we enforce strong requirements around line lengths because it makes for
+# easier side-by-side editing, diffing, and in-browser visualization of sources
+max_line_length = 80
+
+# K&R 1TBS/OTBS style: https://en.wikipedia.org/wiki/Indentation_style#Variant:_1TBS_(OTBS)
+indent_brace_style = 1TBS
+curly_bracket_next_line = false
+spaces_around_operators = true
+spaces_around_brackets = inside # { foo : bar } instead of {foo:bar}
+space_after_control_statements = true
+quote_type = single
+
+[*.md]
+trim_trailing_whitespace = false
+
+[*.cpp, *.hpp, *.c, *.h]
+indent_size = 4

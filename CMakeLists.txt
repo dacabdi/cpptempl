@@ -5,12 +5,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include(vcpkg.cmake)
 
-# will uses .clang-tidy file implicitly
-# please configure in presets for non-windows configs,
-# temporarily disabled here due to:
-# 	https://gitlab.kitware.com/cmake/cmake/-/issues/20512
-# 	https://gitlab.kitware.com/cmake/cmake/-/issues/22979
-# set(CMAKE_CXX_CLANG_TIDY clang-tidy)
+set(CMAKE_CXX_CLANG_TIDY clang-tidy)
 
 include_directories(src/inc)
 
@@ -20,7 +15,7 @@ project (sampleproj
 	LANGUAGES CXX
 	)
 
-add_library (corelib
+add_library (core
 	src/lib/core.cpp
 	)
 
@@ -28,7 +23,21 @@ add_executable (sample
 	src/app/sample/main.cpp
 	)
 
-target_link_libraries (sample corelib)
+target_link_libraries (sample core)
 
 enable_testing()
-add_subdirectory(src/tests)
+
+include(GoogleTest)
+find_package(GTest CONFIG REQUIRED)
+
+add_executable(tests
+    src/tests/ut_corelib.cpp
+    )
+
+target_link_libraries(tests PRIVATE
+    core
+    GTest::gtest
+    GTest::gtest_main
+    )
+
+gtest_discover_tests(tests)

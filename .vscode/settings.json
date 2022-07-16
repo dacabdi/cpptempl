@@ -5,18 +5,27 @@
         "cmake",
         "CMake",
         "cppcoreguidelines",
+        "dacabdi",
+        "deepakputhraya",
         "egor",
         "gtest",
         "jwlawson",
         "libc",
         "lukka",
         "Mayes",
+        "mergeable",
         "NOLINT",
+        "Parens",
         "pwsh",
         "seanmiddleditch",
+        "srvaroa",
         "stdlib",
         "symbitic",
+        "technote",
         "tensin",
         "VCPKG"
-    ]
+    ],
+    "cmake.configureSettings": {
+        "gtest_build_samples": "ON"
+    }
 }

@@ -2,7 +2,6 @@
  .SYNOPSIS
     Bootstrap and describe environment during GitHub Windows CI containers
 #>
-
 param(
 )
 

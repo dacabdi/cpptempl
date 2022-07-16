@@ -1,0 +1,17 @@
+github:
+  - '.github/**/*'
+
+config:
+  - '*'
+
+tests:
+  - 'src/tests/**/*'
+
+app:
+  - 'src/app/**/*'
+
+lib:
+  - 'src/lib/**/*'
+
+headers:
+  - 'src/inc/**/*'
