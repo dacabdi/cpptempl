@@ -1,26 +1,26 @@
 version: 1
 labels:
   # pr title based labels
-  - label: 'release'
-    title: '^release/.*'
+  - label: "release"
+    title: "^release/.*"
 
-  - label: 'feature'
-    title: '^feature/.*'
+  - label: "feature"
+    title: "^feature/.*"
 
-  - label: 'major'
-    title: '^major/.*'
+  - label: "major"
+    title: "^major/.*"
 
-  - label: 'minor'
-    title: '^minor/.*'
+  - label: "minor"
+    title: "^minor/.*"
 
-  - label: 'patch'
-    title: '^patch/.*'
+  - label: "patch"
+    title: "^patch/.*"
 
-  - label: 'chore'
-    title: '^chore/.*'
+  - label: "chore"
+    title: "^chore/.*"
 
   # pr body based labels
-  - label: 'closes-issue'
+  - label: "closes-issue"
     body: '(?P<keyword>close|closes|closed|fix|fixes|fixed|resolve|resolves|resolved) ((?P<owner>\w+)\/(?P<repo>\w+))?#(?P<issue>\d+)(\s|$)'
     # ^ based on the linked issues and pull requests documentation from github.
     # ref doc https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue
@@ -29,19 +29,19 @@ labels:
     # TODO use multiline and remove exception from .editorconfig
 
   # pr status based labels
-  - label: 'mergeable'
+  - label: "mergeable"
     mergeable: true
 
-  - label: 'work-in-progress'
+  - label: "work-in-progress"
     mergeable: false
 
   # pr size based labels
-  - label: 'small'
+  - label: "small"
     size-below: 10
 
-  - label: 'medium'
+  - label: "medium"
     size-above: 9
     size-below: 100
 
-  - label: 'large'
+  - label: "large"
     size-above: 100

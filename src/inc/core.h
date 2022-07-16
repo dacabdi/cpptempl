@@ -2,5 +2,5 @@
 
 namespace core
 {
-	auto add_one(int value) -> int;
+auto add_one(int value) -> int;
 }

@@ -1,31 +1,123 @@
 {
-    "cSpell.words": [
-        "bugprone",
-        "buildsystems",
-        "cmake",
-        "CMake",
-        "cppcoreguidelines",
-        "dacabdi",
-        "deepakputhraya",
-        "egor",
-        "gtest",
-        "jwlawson",
-        "libc",
-        "lukka",
-        "Mayes",
-        "mergeable",
-        "NOLINT",
-        "Parens",
-        "pwsh",
-        "seanmiddleditch",
-        "srvaroa",
-        "stdlib",
-        "symbitic",
-        "technote",
-        "tensin",
-        "VCPKG"
-    ],
-    "cmake.configureSettings": {
-        "gtest_build_samples": "ON"
-    }
+  // we enforce strong requirements around line lengths
+  // because it makes for easier side-by-side editing, diffing,
+  // and in-browser visualization of sources
+  "editor.rulers": [
+    80
+  ],
+  // trailing spaces mess END key cursor positioning,
+  // can introduce hard to trace bugs in some file formats (e.g, batch files),
+  // pollute the commit diffs, introduce noise in reviews, mess up
+  // line wrapping, could introduce errors in multiline string literals, etc.
+  // ref: https://sinaru.com/2017/01/09/trailing-whitespaces-gonna/
+  "editor.trimAutoWhitespace": true, // applied during editing
+  "files.trimTrailingWhitespace": true, // applied upon saving
+  "files.insertFinalNewline": true, // applied upon saving
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  // C/C++ extension configuration
+  "C_Cpp.codeAnalysis.clangTidy.enabled": true,
+  "C_Cpp.codeAnalysis.runAutomatically": true,
+  "C_Cpp.enhancedColorization": "Enabled",
+  "C_Cpp.codeAnalysis.exclude": {
+    "env/**/*": true,
+    "out/**/*": true,
+  },
+  // Cmake extension
+  "cmake.configureSettings": {
+    "gtest_build_samples": "ON"
+  },
+  // Markdown files special editor configuration
+  "[markdown]": {
+    // keep markdown hard wrapped (new-lines)
+    // at 80 lines for readability in all environments
+    // most parsers will ignore a *single* new line
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wrappingIndent": "same",
+    "editor.wordWrapColumn": 80,
+    // automatically rewrap with a hard new line on vertical ruler.
+    // use suggested extension: 'stkb.rewrap'
+    "rewrap.autoWrap.enabled": true,
+    "rewrap.wholeComment": true,
+    // do not remove trailing whitespace on markdown
+    // upon saving might be neccessary for formatting
+    "files.trimTrailingWhitespace": false
+  },
+  // cSpell extension configuration (keep last)
+  "cSpell.words": [
+    "bugprone",
+    "buildsystems",
+    "cmake",
+    "CMake",
+    "constexpr",
+    "cppcoreguidelines",
+    "dacabdi",
+    "deepakputhraya",
+    "Dont",
+    "egor",
+    "gtest",
+    "IWYU",
+    "jwlawson",
+    "libc",
+    "lukka",
+    "Mayes",
+    "mergeable",
+    "NOLINT",
+    "Parens",
+    "pwsh",
+    "seanmiddleditch",
+    "srvaroa",
+    "stdlib",
+    "STRINGIZE",
+    "Struct",
+    "symbitic",
+    "technote",
+    "tensin",
+    "VCPKG",
+    "winget"
+  ],
+  "files.associations": {
+    "atomic": "cpp",
+    "bit": "cpp",
+    "cctype": "cpp",
+    "clocale": "cpp",
+    "cmath": "cpp",
+    "compare": "cpp",
+    "concepts": "cpp",
+    "cstddef": "cpp",
+    "cstdint": "cpp",
+    "cstdio": "cpp",
+    "cstdlib": "cpp",
+    "cstring": "cpp",
+    "ctime": "cpp",
+    "cwchar": "cpp",
+    "exception": "cpp",
+    "initializer_list": "cpp",
+    "ios": "cpp",
+    "iosfwd": "cpp",
+    "iostream": "cpp",
+    "istream": "cpp",
+    "iterator": "cpp",
+    "limits": "cpp",
+    "memory": "cpp",
+    "new": "cpp",
+    "ostream": "cpp",
+    "stdexcept": "cpp",
+    "streambuf": "cpp",
+    "system_error": "cpp",
+    "tuple": "cpp",
+    "type_traits": "cpp",
+    "typeinfo": "cpp",
+    "utility": "cpp",
+    "xfacet": "cpp",
+    "xiosbase": "cpp",
+    "xlocale": "cpp",
+    "xlocinfo": "cpp",
+    "xlocnum": "cpp",
+    "xmemory": "cpp",
+    "xstddef": "cpp",
+    "xstring": "cpp",
+    "xtr1common": "cpp",
+    "xutility": "cpp"
+  },
 }

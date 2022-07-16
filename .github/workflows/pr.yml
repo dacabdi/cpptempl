@@ -9,33 +9,33 @@ on:
 
 jobs:
   review:
-    name: 'Naming conventions'
+    name: "Naming conventions"
     runs-on: ubuntu-latest
     steps:
-      - name: 'Prefixes and length'
+      - name: "Prefixes and length"
         uses: deepakputhraya/action-pr-title@v1.0.2
         with:
           regex: '([a-z]+)\/(.+)'
-          allowed_prefixes: 'release,feature,major,minor,patch,chore'
+          allowed_prefixes: "release,feature,major,minor,patch,chore"
           prefix_case_sensitive: true
           min_length: 5
           max_length: 180
 
   labels:
-    name: 'Automatic labels'
+    name: "Automatic labels"
     permissions:
       contents: read
       pull-requests: write
     runs-on: ubuntu-latest
     steps:
-      - name: 'File matching labels'
+      - name: "File matching labels"
         uses: actions/labeler@v4
         with:
-          repo-token: '${{ secrets.GITHUB_TOKEN }}'
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
           sync-labels: true
           configuration-path: .github/labeler-files.yml
 
-      - name: 'Other labels'
+      - name: "Other labels"
         uses: srvaroa/labeler@v0.9
         with:
           config_path: .github/labeler-misc.yml
@@ -43,14 +43,14 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   participants:
-    name: 'Manage participants'
+    name: "Manage participants"
     runs-on: ubuntu-latest
     steps:
       - name: Assign to author
         uses: technote-space/assign-author@v1
 
   project:
-    name: 'Attribute project'
+    name: "Attribute project"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/add-to-project@v0.1.0

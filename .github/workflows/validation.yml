@@ -1,4 +1,4 @@
-name: 'Validation Pipeline'
+name: "Validation Pipeline"
 
 on:
   pull_request:
@@ -14,7 +14,6 @@ env:
   CMAKE_VERSION: "3.22.2"
 
 jobs:
-
   validate:
     name: Validate on ${{runner.OS}}
     strategy:
@@ -24,11 +23,10 @@ jobs:
           - windows-2022
     runs-on: ${{ matrix.os }}
     steps:
-
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: 'Make all scripts executable'
+      - name: "Make all scripts executable"
         if: runner.os == 'Linux'
         run: chmod +x ${{ env.SCRIPTS_ROOT }}/*
 

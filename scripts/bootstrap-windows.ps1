@@ -1,6 +1,6 @@
 <#
  .SYNOPSIS
-    Bootstrap and describe environment during GitHub Windows CI containers
+  Bootstrap and describe environment during GitHub Windows CI containers
 #>
 param(
 )
@@ -9,18 +9,18 @@ $ErrorActionPreference = 'Stop'
 
 Function Get-Env
 {
-    Get-ChildItem Env:
+  Get-ChildItem Env:
 }
 
 Function Get-WorkingTree
 {
-    tree /A /F $env:GITHUB_WORKSPACE
+  tree /A /F $env:GITHUB_WORKSPACE
 }
 
 Function Main()
 {
-    Get-Env
-    Get-WorkingTree
+  Get-Env
+  Get-WorkingTree
 }
 
 Main

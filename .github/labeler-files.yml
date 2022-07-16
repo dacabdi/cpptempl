@@ -1,17 +1,17 @@
 github:
-  - '.github/**/*'
+  - ".github/**/*"
 
 config:
-  - '*'
+  - "*"
 
 tests:
-  - 'src/tests/**/*'
+  - "src/tests/**/*"
 
 app:
-  - 'src/app/**/*'
+  - "src/app/**/*"
 
 lib:
-  - 'src/lib/**/*'
+  - "src/lib/**/*"
 
 headers:
-  - 'src/inc/**/*'
+  - "src/inc/**/*"

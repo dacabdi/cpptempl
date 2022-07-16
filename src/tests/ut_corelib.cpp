@@ -3,10 +3,10 @@
 
 namespace ut
 {
-    TEST(core, should_add_one) // NOLINT
-    {
-        const auto result = core::add_one(41);
+TEST(core, shouldAddOne)
+{
+    const auto result = core::add_one(41);
 
-        ASSERT_EQ(result, 42);
-    }
+    ASSERT_EQ(result, 42);
+}
 }

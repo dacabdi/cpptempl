@@ -1,13 +1,20 @@
+#include <core.h>
+
 #include <iostream>
-#include "core.h"
 
 auto main() -> int
 {
-	const auto value = core::add_one(41);
+    // don't allow exceptions to leave the program
+    try
+    {
+        auto const value = core::add_one(41);
+        std::string str = "test";
+        std::cout << "The meaning of life is " << value << std::endl;
+    }
+    catch (...)
+    {
+        return 1;
+    }
 
-	std::cout << "The meaning of life is " << value << std::endl;
-
-	try { } catch (...) { };
-
-	return 0;
+    return 0;
 }

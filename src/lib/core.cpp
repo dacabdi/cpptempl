@@ -2,5 +2,5 @@
 
 auto core::add_one(int value) -> int
 {
-	return value + 1;
+    return value + 1;
 }

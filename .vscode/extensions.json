@@ -1,8 +1,31 @@
 {
-    "recommendations": [
-        "ms-vscode.cmake-tools",
-        "ms-vscode.cpptools-extension-pack",
-        "vadimcn.vscode-lldb",
-        "fredericbonnet.cmake-test-adapter"
-    ]
+  "recommendations": [
+    "bierner.markdown-preview-github-styles",
+    "bungcip.better-toml",
+    "codezombiech.gitignore",
+    "cschlosser.doxdocgen",
+    "davidanson.vscode-markdownlint",
+    "editorconfig.editorconfig",
+    "fabianlauer.vs-code-xml-format",
+    "fabiospampinato.vscode-highlight",
+    "fredericbonnet.cmake-test-adapter",
+    "github.copilot",
+    "hbenl.vscode-test-explorer",
+    "jebbs.markdown-extended",
+    "jeff-hykin.better-cpp-syntax",
+    "josetr.cmake-language-support-vscode",
+    "ms-vscode.cmake-tools",
+    "ms-vscode.cpptools-extension-pack",
+    "ms-vscode.cpptools",
+    "pkief.material-icon-theme",
+    "redhat.vscode-xml",
+    "redhat.vscode-yaml",
+    "shardulm94.trailing-spaces",
+    "streetsidesoftware.code-spell-checker",
+    "twxs.cmake",
+    "vadimcn.vscode-lldb",
+    "yzhang.markdown-all-in-one",
+    "stkb.rewrap",
+    "ms-vscode.vs-keybindings"
+  ]
 }

@@ -12,6 +12,4 @@ Checks: >
 WarningsAsErrors: true
 HeaderFilterRegex: ".*"
 AnalyzeTemporaryDtors: true
-FormatStyle: google
 CheckOptions:
-...
