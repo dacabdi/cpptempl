@@ -15,9 +15,14 @@
   "files.insertFinalNewline": true, // applied upon saving
   "editor.formatOnSave": true,
   "editor.formatOnType": true,
-  // C/C++ extension configuration
+  // C/C++ extension configuration (defaults)
+  "C_Cpp.default.intelliSenseMode": "clang-x64",
+  "C_Cpp.default.cStandard": "c17",
+  "C_Cpp.default.cppStandard": "c++20",
+  // C/C++ extension configuration settings
   "C_Cpp.codeAnalysis.clangTidy.enabled": true,
   "C_Cpp.codeAnalysis.runAutomatically": true,
+  "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
   "C_Cpp.enhancedColorization": "Enabled",
   "C_Cpp.codeAnalysis.exclude": {
     "env/**/*": true,
@@ -63,6 +68,7 @@
     "Mayes",
     "mergeable",
     "NOLINT",
+    "NOLINTNEXTLINE",
     "Parens",
     "pwsh",
     "seanmiddleditch",
