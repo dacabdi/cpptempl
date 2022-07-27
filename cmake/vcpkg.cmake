@@ -1,4 +1,3 @@
-# VCPKG_ROOT
 if(DEFINED ENV{VCPKG_ROOT})
   message("VCPKG_ROOT overriden in environment")
   set(VCPKG_ROOT $ENV{VCPKG_ROOT})

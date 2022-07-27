@@ -15,3 +15,17 @@ lib:
 
 headers:
   - "src/inc/**/*"
+
+cmake:
+  - "cmake/**/*"
+  - "CMakeLists.txt"
+  - "CMakePresets.json"
+  - "**/CMakeLists.txt"
+
+clang-tidy:
+  - ".clang-format"
+  - ".clang-tidy"
+
+doc:
+  - "doc/**/*"
+  - "README.md"
