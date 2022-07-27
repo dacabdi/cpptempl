@@ -5,26 +5,5 @@
       "C": "clang",
       "CXX": "clang"
     }
-  },
-  {
-    "name": "gcc compiler kit",
-    "compilers": {
-      "C": "gcc",
-      "CXX": "g++"
-    }
-  },
-  {
-    "name": "msvc compiler kit",
-    "compilers": {
-      "C": "cl",
-      "CXX": "cl"
-    }
-  },
-  {
-    "name": "vcpkg toolchain file",
-    "compilers": {
-      "C": "gcc",
-      "CXX": "g++"
-    }
   }
 ]

@@ -15,7 +15,7 @@ env:
 
 jobs:
   validate:
-    name: Validate on ${{runner.OS}}
+    name: Validate on ${{ runner.OS }}
     strategy:
       matrix:
         os:
@@ -26,19 +26,25 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: "Make all scripts executable"
+      - name: "Make all Linux scripts executable"
         if: runner.os == 'Linux'
         run: chmod +x ${{ env.SCRIPTS_ROOT }}/*
 
-      - name: Prepare and describe working environment
-        if: ${{ runner.OS == 'Linux' }}
-        shell: bash
-        run: ${{ env.SCRIPTS_ROOT }}/bootstrap-linux.sh
+      - name: Capture runner OS name string
+        id: runner_os
+        uses: ASzc/change-string-case-action@v1
+        with:
+          string: ${{ runner.OS }}
 
-      - name: Prepare and describe working environment
-        if: ${{ runner.OS == 'Windows' }}
+      - name: Run preliminary Linux CI scripts
+        if: runner.OS == 'Linux'
+        shell: bash
+        run: ${{ env.SCRIPTS_ROOT }}/ci/linux.sh
+
+      - name: Run preliminary Windows CI scripts
+        if: runner.OS == 'Windows'
         shell: pwsh
-        run: ${{ env.SCRIPTS_ROOT }}/bootstrap-windows.ps1
+        run: ${{ env.SCRIPTS_ROOT }}/ci/windows.ps1
 
       - name: Cache LLVM and Clang
         id: cache-llvm
@@ -67,8 +73,9 @@ jobs:
         with:
           destination: ${{ env.GITHUB_WORKSPACE }}/env/ninja-build
 
-      - name: CMake configure and build
+      - name: CMake configure, build, and test
         uses: lukka/run-cmake@v10
         with:
-          configurePreset: linux-x64-release
-          buildPreset: linux-x64-release
+          configurePreset: ${{ steps.runner_os.outputs.lowercase }}-x64-release
+          buildPreset: ${{ steps.runner_os.outputs.lowercase }}-x64-release
+          testPreset: ${{ steps.runner_os.outputs.lowercase }}-x64-release

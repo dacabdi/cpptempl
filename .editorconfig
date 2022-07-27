@@ -9,7 +9,7 @@ indent_style = space
 tab_width = 2
 indent_size = 2
 charset = utf-8
-end_of_line = crlf
+end_of_line = lf
 trim_trailing_whitespace = true
 insert_final_newline = true
 
@@ -31,3 +31,6 @@ trim_trailing_whitespace = false
 [*.{h,hpp,c,cpp,cc,cxx,hxx,hh,hpp,hxx,h++,c++,cc++,cxx++,hh++}]
 tab_width = 4
 indent_size = 4
+
+[*.{cmd,[cC][mM][dD],bat,[bB][aA][tT]}]
+end_of_line = crlf
